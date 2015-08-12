@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(isset($_SESSION['answeredQuestionCount'])){
+   header("Location: quiz.php");
+}
+require("inc/questions.php");
 ?>
 <!doctype html>
 <html>
@@ -10,7 +14,7 @@ session_start();
 <body>
     <h1>QUIZ</h1>
     <h3>#lyk2015 PHP - Quiz Projesi</h3>
-    <p>Karşınıza <?=$_SESSION['totalQuestionCount'];?> soru gelecek ve sonuçta başarı puanınızı göreceksiniz.</p>
+    <p>Karşınıza <?=count($questions);?> soru gelecek ve sonuçta başarı puanınızı göreceksiniz.</p>
     <a href="quiz.php">Sınava Başla</a>
 </body>
 </html>

@@ -1,6 +1,8 @@
 <?php
-
 session_start();
+if(!isset($_SESSION['finishTime'])){
+    header("Location: quiz.php");
+}
 
 $totalTime = ($_SESSION['finishTime']-$_SESSION['startTime']);
 

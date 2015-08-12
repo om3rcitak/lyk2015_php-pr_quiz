@@ -1,40 +1,6 @@
 <?php
-
-$questions = array(
-    array(
-        'question' => "1 Cumhuriyet hangi yıl ilan edildi?",
-        'options' => array(
-            'a' => '1919',
-            'b' => '1920',
-            'c' => '1922',
-            'd' => '1923',
-        ),
-        'answer' => 'd'
-    ),
-    array(
-        'question' => "2 Cumhuriyet hangi yıl ilan edildi?",
-        'options' => array(
-            'a' => '1919',
-            'b' => '1920',
-            'c' => '1922',
-            'd' => '1923',
-        ),
-        'answer' => 'd'
-    ),
-    array(
-        'question' => "3 Cumhuriyet hangi yıl ilan edildi?",
-        'options' => array(
-            'a' => '1919',
-            'b' => '1920',
-            'c' => '1922',
-            'd' => '1923',
-        ),
-        'answer' => 'd'
-    ),
-);
-
 session_start();
-
+require("inc/questions.php");
 if(! isset($_SESSION['answeredQuestionCount'])){
     //ilk çalıştırma, oturumu başlat
     $_SESSION['totalQuestionCount'] = count($questions);
@@ -55,8 +21,8 @@ if(isset( $_POST['answer'])){
 
     $_SESSION['answeredQuestionCount']++;
 }
-echo $_SESSION['correctAnswerCount'] ." / ";
-echo $_SESSION['answeredQuestionCount'];
+echo ($_SESSION['answeredQuestionCount']+1) ." / ";
+echo $_SESSION['totalQuestionCount'];
 // sıradaki soruyu seç, göster
 
 // son soru görüntüleniyorsa
@@ -97,5 +63,6 @@ $currentQuestion = $questions[$_SESSION['answeredQuestionCount']];
     <br>
     <input type="submit" value="<?=$btnText;?>">
     </form>
+    <a href="destroy.php">Testi Yeniden Başlat</a>
 </body>
 </html>
