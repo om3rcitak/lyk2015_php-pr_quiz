@@ -5,7 +5,7 @@
 if($_POST){
     require("../inc/functions.php");
     autoLoader();
-    $questions = getAllQuestions();
+    $questions = getAllQuestions("../");
     // veriyi yazacağımız dosya yolu
     $questionsDataFilePath = "../data/questions.txt";
     $message = "Soru eklenemedi";
