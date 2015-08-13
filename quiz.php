@@ -29,7 +29,9 @@ else
 //  tüm sorular yanıtlandıysa
 //      testi bitir, sonuca yönlendir
 if($_SESSION['answeredQuestionCount'] == $_SESSION['totalQuestionCount']){
-    $_SESSION['finishTime'] = time();
+    if (empty($_SESSION['finishTime'])) {
+		$_SESSION['finishTime'] = time();
+	}
     header("Location: result.php");
     die();
 }
