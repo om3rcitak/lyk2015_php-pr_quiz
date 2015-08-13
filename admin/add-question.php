@@ -3,7 +3,9 @@
 // bunu bir sayfaya post edeceğim
 // gelen veri geçerliyse kaydedeceğim
 if($_POST){
-    require("../inc/questions.php");
+    require("../inc/functions.php");
+    autoLoader();
+    $questions = getAllQuestions();
     // veriyi yazacağımız dosya yolu
     $questionsDataFilePath = "../data/questions.txt";
     $message = "Soru eklenemedi";
@@ -25,11 +27,11 @@ if($_POST){
     fclose($questionsDataFile);
 }
 ?>
-<meta charset="UTF-8">
+<?php include("../inc/header.php"); ?>
 <?php
 if(isset($message)) echo $message."<hr>";
 ?>
-<form action="" method="post">
+<form action="" method="post" class="form-group">
     Soru: <input type="text" name="question"><br>
     <?php
     for($i="a"; $i<="d"; $i++):
@@ -40,3 +42,4 @@ if(isset($message)) echo $message."<hr>";
     ?>
     <input type="submit" value="Soru Ekle">
 </form>
+<?php include("../inc/footer.php"); ?>
