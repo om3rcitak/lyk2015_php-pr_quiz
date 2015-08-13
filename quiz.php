@@ -15,6 +15,19 @@ if(isset( $_POST['answer'])){
         // cevap doğru, işlem yap
         $_SESSION['correctAnswerCount']++;
 
+
+    ////cavabın doğru yanlış olduğuna bakmadan kullanıcı cevabını diziye ve diziyi de sessiona ekle.
+    $_SESSION["compareAnswers"][]=array(
+        "correctAnswer"=>$questions[$_SESSION['answeredQuestionCount']]['answer'],
+    "myAnswer"=>$_POST['answer']
+        );
+
+
+
+
+
+
+
     $_SESSION['answeredQuestionCount']++;
 }
 // sıradaki soruyu seç, göster
@@ -22,7 +35,10 @@ if(isset( $_POST['answer'])){
 // son soru görüntüleniyorsa
 //      butonun metnini değiştir
 if($_SESSION['answeredQuestionCount'] == ($_SESSION['totalQuestionCount']-1) )
+{
     $btnText = "Testi Bitir";
+
+}
 else
     $btnText = "Sonraki Soru";
 
