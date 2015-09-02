@@ -20,4 +20,18 @@ $usersPoint = $aQuestionPoint * $_SESSION['correctAnswerCount'];
     </ul>
     <a href="destroy.php" class="btn btn-primary">Testi Yeniden Başlat</a>
     </div>
-<?php include('inc/footer.php'); ?>
+<?php
+/////test bittiğinde sonuçları dök
+foreach($_SESSION["compareAnswers"] as $i=> $total)
+{
+    if($total["correctAnswer"]==$total["myAnswer"])
+    { $point="DOĞRU";
+        $color="green";}
+    else
+    { $point="YANLIŞ";
+        $color="red";}
+       echo ($i+1). "<font  color=".$color.">.SORU: Sizin Cevabınız:<span >".$total["correctAnswer"]."</span>, Doğru cevap:". $total["myAnswer"].", DURUM:". $point."</font><br/>";
+
+}
+
+include('inc/footer.php'); ?>
